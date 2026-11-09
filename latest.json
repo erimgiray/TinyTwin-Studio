@@ -1,0 +1,10 @@
+{
+  "version": "1.2.1",
+  "notes": "- In-app updates: Settings \u2192 Updates installs new versions and restarts the app\n- Opens in its own window (WebView2) instead of an Edge window\n- Figure builder, pipeline, parts library, 3D viewer and costing",
+  "published": "2026-11-09T21:03:43Z",
+  "exe": {
+    "url": "https://raw.githubusercontent.com/erimgiray/TinyTwin-Studio/main/bin/1.2.1/TinyTwinStudio.exe",
+    "sha256": "17e211708a9ae6d7989af02ac56c979165b8ca318ae2acb900563a8d0789933c",
+    "size": 8689152
+  }
+}
