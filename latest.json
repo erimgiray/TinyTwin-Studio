@@ -1,10 +1,10 @@
 {
-  "version": "1.3.0",
-  "notes": "- New Part kit page: 3D base figure, body types (Standard / Slim / Broad sharing one master head and plinth), swappable parts with live 3D preview\n- Add parts from AI 3D models: lined up by plinth and head, base cut away, colour-checked, fused 1 mm into the body\n- Design system tab: measured base dimensions, anchor boxes, printer profile (default: multi-colour filament), view rules\n- Export print STL: one watertight body in mm, Z up; warns if anything isn't joined\n- Download pilot kit: Standard, Slim, Broad + round glasses",
-  "published": "2026-11-10T00:11:46Z",
+  "version": "1.3.1",
+  "notes": "- Removed demo content: the 'Download pilot kit' and 'Get Tee + jeans model' buttons\n- Removed placeholder costs: material, print speed, labour, packaging, shipping and fees now start blank (your own saved figures are kept)\n- Unit cost and margin show '\u2014' until you enter real costs on the Costing page",
+  "published": "2026-11-10T22:02:18Z",
   "exe": {
-    "url": "https://raw.githubusercontent.com/erimgiray/TinyTwin-Studio/main/bin/1.3.0/TinyTwinStudio.exe",
-    "sha256": "e155eeb11d46af41c942a1963804c07656892594337adbf617f2484a1dc346f5",
-    "size": 8981504
+    "url": "https://raw.githubusercontent.com/erimgiray/TinyTwin-Studio/main/bin/1.3.1/TinyTwinStudio.exe",
+    "sha256": "861b53e5d6610295570bb3ff8bf843c88372c00d0e3f58825a1588ded9a98720",
+    "size": 8982016
   }
 }
