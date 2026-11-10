@@ -1,10 +1,10 @@
 {
-  "version": "1.3.1",
-  "notes": "- Removed demo content: the 'Download pilot kit' and 'Get Tee + jeans model' buttons\n- Removed placeholder costs: material, print speed, labour, packaging, shipping and fees now start blank (your own saved figures are kept)\n- Unit cost and margin show '\u2014' until you enter real costs on the Costing page",
-  "published": "2026-11-10T22:02:18Z",
+  "version": "1.3.2",
+  "notes": "- 3D viewer: every model has an info (\u24d8) button \u2014 file details, which order or part kit it belongs to, kit details (volume, thickness check, head fit, source), measured size, volume, triangle count, watertight check, and your own notes\n- Part kit models (base, body types, parts) now also appear in the 3D viewer's model list",
+  "published": "2026-11-10T22:09:13Z",
   "exe": {
-    "url": "https://raw.githubusercontent.com/erimgiray/TinyTwin-Studio/main/bin/1.3.1/TinyTwinStudio.exe",
-    "sha256": "861b53e5d6610295570bb3ff8bf843c88372c00d0e3f58825a1588ded9a98720",
-    "size": 8982016
+    "url": "https://raw.githubusercontent.com/erimgiray/TinyTwin-Studio/main/bin/1.3.2/TinyTwinStudio.exe",
+    "sha256": "a2826ed462cfad8e8e9ac6af9fa220a12244e9202839739d0022c3570283f34c",
+    "size": 8988672
   }
 }
