@@ -1,10 +1,10 @@
 {
-  "version": "1.2.1",
-  "notes": "- In-app updates: Settings \u2192 Updates installs new versions and restarts the app\n- Opens in its own window (WebView2) instead of an Edge window\n- Figure builder, pipeline, parts library, 3D viewer and costing",
-  "published": "2026-11-09T21:03:43Z",
+  "version": "1.3.0",
+  "notes": "- New Part kit page: 3D base figure, body types (Standard / Slim / Broad sharing one master head and plinth), swappable parts with live 3D preview\n- Add parts from AI 3D models: lined up by plinth and head, base cut away, colour-checked, fused 1 mm into the body\n- Design system tab: measured base dimensions, anchor boxes, printer profile (default: multi-colour filament), view rules\n- Export print STL: one watertight body in mm, Z up; warns if anything isn't joined\n- Download pilot kit: Standard, Slim, Broad + round glasses",
+  "published": "2026-11-10T00:11:46Z",
   "exe": {
-    "url": "https://raw.githubusercontent.com/erimgiray/TinyTwin-Studio/main/bin/1.2.1/TinyTwinStudio.exe",
-    "sha256": "17e211708a9ae6d7989af02ac56c979165b8ca318ae2acb900563a8d0789933c",
-    "size": 8689152
+    "url": "https://raw.githubusercontent.com/erimgiray/TinyTwin-Studio/main/bin/1.3.0/TinyTwinStudio.exe",
+    "sha256": "e155eeb11d46af41c942a1963804c07656892594337adbf617f2484a1dc346f5",
+    "size": 8981504
   }
 }
