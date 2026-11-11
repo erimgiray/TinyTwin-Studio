@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TinyTwin Studio</title>
+<link rel="icon" href="logo.svg">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="nav">
+    <div class="brand"><img src="logo.svg" alt=""><div><b>TinyTwin</b><span>Studio</span></div></div>
+    <nav id="nav">
+      <a data-view="dashboard"><i>◧</i>Dashboard</a>
+      <a data-view="orders"><i>▤</i>Pipeline</a>
+      <a data-view="builder"><i>✦</i>Figure builder</a>
+      <a data-view="library"><i>▦</i>Parts library</a>
+      <a data-view="kit"><i>⬡</i>Part kit</a>
+      <a data-view="viewer"><i>◈</i>3D viewer</a>
+      <a data-view="costing"><i>£</i>Costing</a>
+      <a data-view="settings"><i>⚙</i>Settings</a>
+    </nav>
+    <div class="nav-foot" id="navFoot"></div>
+  </aside>
+  <main id="main"></main>
+</div>
+<div id="drawer" class="drawer" hidden></div>
+<div id="modal" class="modal" hidden></div>
+<div id="toasts" class="toasts"></div>
+<script src="dist/app.js"></script>
+</body>
+</html>
