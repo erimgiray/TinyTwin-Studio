@@ -190,6 +190,7 @@ func routes(mux *http.ServeMux) {
 		writeJSON(w, map[string]any{"dataDir": dataDir, "libraryURL": libraryURL, "version": version})
 	})
 	kitRoutes(mux)
+	blenderRoutes(mux)
 	mux.HandleFunc("/api/update/check", handleUpdateCheck)
 	mux.HandleFunc("/api/update/install", handleUpdateInstall)
 	mux.HandleFunc("/api/db", handleDB)
@@ -656,7 +657,7 @@ func thumb(src, dst string, max int) {
 
 // ---------- 3D models ----------
 
-var modelExt = map[string]bool{".glb": true, ".gltf": true, ".obj": true, ".mtl": true, ".stl": true, ".png": true, ".jpg": true, ".jpeg": true, ".bin": true}
+var modelExt = map[string]bool{".glb": true, ".gltf": true, ".obj": true, ".mtl": true, ".stl": true, ".png": true, ".jpg": true, ".jpeg": true, ".bin": true, ".blend": true}
 
 func handleModelImport(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
@@ -682,7 +683,7 @@ func handleModelImport(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if n == 0 {
-		http.Error(w, "No GLB, OBJ or STL files found in that zip.", 400)
+		http.Error(w, "No GLB, OBJ, STL or .blend files found in that zip.", 400)
 		return
 	}
 	writeJSON(w, modelIndex())
@@ -697,7 +698,7 @@ func modelIndex() []map[string]any {
 				return nil
 			}
 			ext := strings.ToLower(filepath.Ext(p))
-			if ext != ".glb" && ext != ".gltf" && ext != ".obj" && ext != ".stl" {
+			if ext != ".glb" && ext != ".gltf" && ext != ".obj" && ext != ".stl" && ext != ".blend" {
 				return nil
 			}
 			rel, _ := filepath.Rel(dataDir, p)
@@ -719,6 +720,7 @@ func init() {
 	mime.AddExtensionType(".glb", "model/gltf-binary")
 	mime.AddExtensionType(".gltf", "model/gltf+json")
 	mime.AddExtensionType(".stl", "model/stl")
+	mime.AddExtensionType(".blend", "application/x-blender")
 	mime.AddExtensionType(".obj", "text/plain")
 	mime.AddExtensionType(".mtl", "text/plain")
 	mime.AddExtensionType(".svg", "image/svg+xml")

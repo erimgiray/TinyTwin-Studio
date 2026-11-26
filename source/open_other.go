@@ -21,6 +21,8 @@ func openWindow(url string) {
 
 func openPath(p string) { openWindow(p) }
 
+func hideConsole(cmd *exec.Cmd) {}
+
 func fatal(msg string) {
 	fmt.Fprintln(os.Stderr, msg)
 	os.Exit(1)

@@ -40,6 +40,11 @@ func openWindow(url string) {
 	exec.Command("rundll32", "url.dll,FileProtocolHandler", url).Start()
 }
 
+// hideConsole stops a console program (Blender in background mode) from flashing a window.
+func hideConsole(cmd *exec.Cmd) {
+	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true, CreationFlags: 0x08000000} // CREATE_NO_WINDOW
+}
+
 func openPath(p string) {
 	exec.Command("explorer", p).Start()
 }

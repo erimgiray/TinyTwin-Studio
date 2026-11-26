@@ -218,8 +218,8 @@ function renderJob(d, job, close, render) {
         <div class="tiles sm">${job.concepts.map((p, i) => `<div class="tile" data-cimg="${i}"><img src="${p.url}" loading="lazy"><button class="del" data-delc="${i}">✕</button><div class="cap">${esc(p.name)}</div></div>`).join('')}</div>
         <div class="drop-zone" id="cDrop" style="margin-top:10px">Drop Higgsfield renders (front, back, sides)</div></div>
       <div class="card"><h3>3D model files</h3>
-        ${job.models.length ? `<table class="t">${job.models.map((m, i) => `<tr><td>${esc(m.name)}</td><td style="text-align:right">${/\.(glb|gltf|obj|stl)$/i.test(m.name) ? `<button class="btn sm" data-view3d="${i}">View in 3D</button>` : ''} <button class="btn sm ghost danger" data-delm="${i}">✕</button></td></tr>`).join('')}</table>` : '<p class="muted small">No model yet.</p>'}
-        <div class="drop-zone" id="mDrop" style="margin-top:10px">Drop GLB / OBJ / STL (+ textures)</div></div>
+        ${job.models.length ? `<table class="t">${job.models.map((m, i) => `<tr><td>${esc(m.name)}</td><td style="text-align:right">${/\.(glb|gltf|obj|stl|blend)$/i.test(m.name) ? `<button class="btn sm" data-view3d="${i}">View in 3D</button>` : ''} <button class="btn sm ghost danger" data-delm="${i}">✕</button></td></tr>`).join('')}</table>` : '<p class="muted small">No model yet.</p>'}
+        <div class="drop-zone" id="mDrop" style="margin-top:10px">Drop .blend, GLB, OBJ or STL (+ textures)</div></div>
     </div>
 
     <div class="card"><h3>History</h3>${[...job.history].reverse().map((h) => `<div class="small" style="padding:3px 0"><span class="tiny">${new Date(h.t).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' })}</span> · ${esc(h.msg)}</div>`).join('')}
@@ -255,7 +255,7 @@ function renderJob(d, job, close, render) {
   const wire = (id, kind, list, accept) => { const z = $(id, p); dropZone(z, addFiles(kind, list)); z.onclick = async () => { const f = await pickFiles(accept); if (f.length) addFiles(kind, list)(f); }; };
   wire('#phDrop', 'photos', job.photos, 'image/*');
   wire('#cDrop', 'concepts', job.concepts, 'image/*');
-  wire('#mDrop', 'models', job.models, '.glb,.gltf,.obj,.mtl,.stl,.png,.jpg,.jpeg,.bin');
+  wire('#mDrop', 'models', job.models, '.blend,.glb,.gltf,.obj,.mtl,.stl,.png,.jpg,.jpeg,.bin');
   $$('[data-tag]', p).forEach((s) => { s.onclick = (e) => e.stopPropagation(); s.onchange = () => { job.photos[s.dataset.tag].tag = s.value; touch(); render(); }; });
   const delFile = (list, i) => { const f = list[i]; list.splice(i, 1); api('/api/files?path=' + encodeURIComponent(f.path), { method: 'DELETE' }).catch(() => {}); touch(); render(); };
   $$('[data-delph]', p).forEach((b) => (b.onclick = (e) => { e.stopPropagation(); delFile(job.photos, +b.dataset.delph); }));

@@ -85,8 +85,10 @@ export function renderSettings(main) {
       ${Object.entries(labels).map(([k, l]) => `<label class="f">${l}<input class="in" data-ref="${k}" value="${esc(refs[k] || '')}" style="font-family:Consolas,monospace;font-size:12.5px"></label>`).join('')}</div>
       <div class="row" style="margin-top:10px"><span class="grow"></span><button class="btn sm ghost" id="sRefReset">Reset to figure standard v0.4</button></div></div>
   </div>
+  <div class="card" style="margin-top:14px" id="sBlender"></div>
   <div class="card" style="margin-top:14px"><h3>About</h3><p class="small muted" style="margin:0">TinyTwin Studio ${esc(state.info.version || '')} · internal tool for testing figure parts and running orders from photo to print. The interface is plain HTML/CSS, so components (part picker, spec card, pipeline cards) can be lifted onto the website.</p></div>`;
   renderUpdates($('#upd', main));
+  renderBlender($('#sBlender', main));
   $('#sOpen', main).onclick = () => api('/api/open?path=', { method: 'POST' });
   $('#sExport', main).onclick = () => {
     const a = document.createElement('a');
@@ -107,6 +109,21 @@ export function renderSettings(main) {
   };
   $$('[data-ref]', main).forEach((i) => (i.onchange = () => { refs[i.dataset.ref] = i.value.trim(); save(); toast('Saved'); }));
   $('#sRefReset', main).onclick = () => { state.db.settings.refs = { ...DEFAULT_REFS }; save(); renderSettings(main); };
+}
+
+// ---------------- Blender ----------------
+async function renderBlender(el) {
+  el.innerHTML = '<h3>Blender</h3><span class="spin"></span>';
+  const draw = (b) => {
+    el.innerHTML = `<h3>Blender</h3>
+      <p class="small muted" style="margin-top:0">The 3D viewer uses Blender (run in the background) to open .blend files. It's found automatically; set the path only if you keep Blender somewhere unusual.</p>
+      <div class="stat"><span>Using</span><b style="overflow-wrap:anywhere;text-align:right;max-width:70%">${b.found ? esc(b.path) : '<span style="color:var(--bad)">Not found — install Blender from blender.org, or set its location below</span>'}</b></div>
+      <div class="row" style="margin-top:10px"><input class="in grow" id="sBlPath" placeholder="C:\\Program Files\\Blender Foundation\\Blender 4.5\\blender.exe" value="${esc(b.chosen || '')}"><button class="btn" id="sBlSave">Save</button>${b.chosen ? '<button class="btn ghost" id="sBlAuto">Find automatically</button>' : ''}</div>`;
+    const set = async (path) => { try { draw(await api('/api/blender', { method: 'PUT', body: JSON.stringify({ path }), headers: { 'Content-Type': 'application/json' } })); toast('Saved'); } catch (e) { toast(e.message, true); } };
+    $('#sBlSave', el).onclick = () => set($('#sBlPath', el).value);
+    $('#sBlAuto', el) && ($('#sBlAuto', el).onclick = () => set(''));
+  };
+  try { draw(await api('/api/blender')); } catch (e) { el.innerHTML = '<h3>Blender</h3><p class="small">' + esc(e.message) + '</p>'; }
 }
 
 // ---------------- Updates ----------------
