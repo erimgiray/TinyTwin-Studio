@@ -1,10 +1,10 @@
 {
-  "version": "1.4.0",
-  "notes": "Part standards: define rules once (zone, colour limit, prompt recipe, variant slots) and generate many versions of eyes, brows, mouths, arms and more. Paint mode keys a 2D design onto the face and flattens it to the printer's colour limit. Replace mode swaps an arm on the current body type. Kits can be imported from a link. Info icon on every 3D model.",
-  "published": "2026-11-10T22:43:33Z",
+  "version": "1.5.0",
+  "notes": "3D viewer opens Blender (.blend) files: scene list with show/hide/solo, object details, print-problem edges, section cuts, point-to-point measuring, camera views and a Blender file card. Set Blender's location in Settings if it isn't found automatically.",
+  "published": "2026-11-26T12:59:01Z",
   "exe": {
-    "url": "https://raw.githubusercontent.com/erimgiray/TinyTwin-Studio/main/bin/1.4.0/TinyTwinStudio.exe",
-    "sha256": "ba97e69f7082add695137bd79e1e2cf8e40f0a823a7d6b0b7c57f4b6c1afdf22",
-    "size": 9019904
+    "url": "https://raw.githubusercontent.com/erimgiray/TinyTwin-Studio/main/bin/1.5.0/TinyTwinStudio.exe",
+    "sha256": "28a8fcfb00bc2a2555cb0d4ff121af01abe0739c69d0f143a1c8b32a71d0048e",
+    "size": 9188864
   }
 }

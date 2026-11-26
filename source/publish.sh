@@ -12,7 +12,9 @@ mkdir -p "$REL/bin/$V"
 cp dist/TinyTwinStudio.exe "$REL/bin/$V/TinyTwinStudio.exe"
 SUM=$(cut -d' ' -f1 dist/TinyTwinStudio.exe.sha256)
 SIZE=$(stat -c %s dist/TinyTwinStudio.exe)
-python3 - "$V" "$NOTES" "$REPO" "$SUM" "$SIZE" > "$REL/latest.json" <<'PY'
+# python3 can be the Windows Store stub; use the first interpreter that actually runs
+PY=""; for c in python3 python py; do if "$c" -c "" >/dev/null 2>&1; then PY=$c; break; fi; done; [ -n "$PY" ] || { echo "Python not found" >&2; exit 1; }
+$PY - "$V" "$NOTES" "$REPO" "$SUM" "$SIZE" > "$REL/latest.json" <<'PY'
 import json, sys, datetime
 v, notes, repo, s, size = sys.argv[1:]
 print(json.dumps({"version": v, "notes": notes, "published": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
